@@ -1,0 +1,274 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.JComboBox;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import java.awt.Color;
+import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
+
+public class StudentRecords extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField textFieldName;
+	private JTextField textFieldIdNum;
+	private JTextField textFieldAge;
+	private JTextField textFieldAddress;
+	private JTextField textFieldPrelim;
+	private JTextField textFieldMidterm;
+	private JTextField textFieldFinals;
+	private JComboBox<String> comboBoxCourse;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					StudentRecords frame = new StudentRecords();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public StudentRecords() {
+		setTitle("Student Records");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 670, 505);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblStudentInfo = new JLabel("Student Information");
+		lblStudentInfo.setFont(new Font("Arial", Font.BOLD, 14));
+		lblStudentInfo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStudentInfo.setBounds(110, 0, 155, 36);
+		contentPane.add(lblStudentInfo);
+		
+		JLabel lblName = new JLabel("Name: ");
+		lblName.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblName.setFont(new Font("Arial", Font.BOLD, 12));
+		lblName.setBounds(0, 44, 74, 14);
+		contentPane.add(lblName);
+		
+		textFieldName = new JTextField();
+		textFieldName.setBounds(84, 37, 221, 28);
+		contentPane.add(textFieldName);
+		textFieldName.setColumns(10);
+		
+		JLabel lblIdNumber = new JLabel("ID Number:");
+		lblIdNumber.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblIdNumber.setFont(new Font("Arial", Font.BOLD, 12));
+		lblIdNumber.setBounds(0, 84, 74, 14);
+		contentPane.add(lblIdNumber);
+		
+		textFieldIdNum = new JTextField();
+		textFieldIdNum.setColumns(10);
+		textFieldIdNum.setBounds(84, 77, 221, 28);
+		contentPane.add(textFieldIdNum);
+		
+		JLabel lblProgram = new JLabel("Program:");
+		lblProgram.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblProgram.setFont(new Font("Arial", Font.BOLD, 12));
+		lblProgram.setBounds(0, 122, 74, 14);
+		contentPane.add(lblProgram);
+		
+		JRadioButton rdoBsit = new JRadioButton("BSIT");
+		rdoBsit.setFont(new Font("Arial", Font.BOLD, 11));
+		rdoBsit.setBounds(84, 118, 57, 23);
+		contentPane.add(rdoBsit);
+		
+		JRadioButton rdoBscs = new JRadioButton("BSCS");
+		rdoBscs.setFont(new Font("Arial", Font.BOLD, 11));
+		rdoBscs.setBounds(154, 118, 93, 23);
+		contentPane.add(rdoBscs);
+		
+		//Create button group to allow the user to single select the option for their program
+		ButtonGroup rdoGroupCourse = new ButtonGroup();
+		rdoGroupCourse.add(rdoBsit);
+		rdoGroupCourse.add(rdoBscs);
+		
+		
+		textFieldAge = new JTextField();
+		textFieldAge.setColumns(10);
+		textFieldAge.setBounds(84, 158, 221, 28);
+		contentPane.add(textFieldAge);
+		
+		textFieldAddress = new JTextField();
+		textFieldAddress.setColumns(10);
+		textFieldAddress.setBounds(84, 197, 221, 28);
+		contentPane.add(textFieldAddress);
+		
+		JLabel lblAge = new JLabel("Age");
+		lblAge.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblAge.setFont(new Font("Arial", Font.BOLD, 12));
+		lblAge.setBounds(0, 165, 74, 14);
+		contentPane.add(lblAge);
+		
+		JLabel lblAddress = new JLabel("Address");
+		lblAddress.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblAddress.setFont(new Font("Arial", Font.BOLD, 12));
+		lblAddress.setBounds(0, 204, 74, 14);
+		contentPane.add(lblAddress);
+		
+		JLabel lblSubjectInformation = new JLabel("Subject Information");
+		lblSubjectInformation.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSubjectInformation.setFont(new Font("Arial", Font.BOLD, 14));
+		lblSubjectInformation.setBounds(110, 227, 155, 36);
+		contentPane.add(lblSubjectInformation);
+		
+		// Add combo box for courses
+        comboBoxCourse = new JComboBox<>();
+        comboBoxCourse.addItem("CS102");
+        comboBoxCourse.addItem("NET102");
+        comboBoxCourse.addItem("IT231");
+        comboBoxCourse.addItem("IT201");
+        comboBoxCourse.addItem("IT102");
+        comboBoxCourse.addItem("NSTP102");
+        comboBoxCourse.addItem("PCOM102");
+        comboBoxCourse.addItem("CALC102");
+        comboBoxCourse.addItem("PATHFIT102");
+        comboBoxCourse.setEditable(true);
+		comboBoxCourse.setBounds(84, 264, 221, 22);
+		contentPane.add(comboBoxCourse);
+		
+		JLabel lblCourse = new JLabel("Course");
+		lblCourse.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCourse.setFont(new Font("Arial", Font.BOLD, 12));
+		lblCourse.setBounds(0, 268, 74, 14);
+		contentPane.add(lblCourse);
+		
+		textFieldPrelim = new JTextField();
+		textFieldPrelim.setColumns(10);
+		textFieldPrelim.setBounds(84, 298, 221, 28);
+		contentPane.add(textFieldPrelim);
+		
+		textFieldMidterm = new JTextField();
+		textFieldMidterm.setColumns(10);
+		textFieldMidterm.setBounds(84, 337, 221, 28);
+		contentPane.add(textFieldMidterm);
+		
+		textFieldFinals = new JTextField();
+		textFieldFinals.setColumns(10);
+		textFieldFinals.setBounds(84, 376, 221, 28);
+		contentPane.add(textFieldFinals);
+		
+		JLabel lblPrelim = new JLabel("Prelim:");
+		lblPrelim.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPrelim.setFont(new Font("Arial", Font.BOLD, 12));
+		lblPrelim.setBounds(0, 305, 74, 14);
+		contentPane.add(lblPrelim);
+		
+		JLabel lblMidtrem = new JLabel("Midterm:");
+		lblMidtrem.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblMidtrem.setFont(new Font("Arial", Font.BOLD, 12));
+		lblMidtrem.setBounds(0, 344, 74, 14);
+		contentPane.add(lblMidtrem);
+		
+		JLabel lblFinals = new JLabel("Finals:");
+		lblFinals.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblFinals.setFont(new Font("Arial", Font.BOLD, 12));
+		lblFinals.setBounds(0, 383, 74, 14);
+		contentPane.add(lblFinals);
+		
+		
+        
+		//the contai/ner to print the user input 
+		JTextArea txtStudentInfoSum = new JTextArea();
+		txtStudentInfoSum.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		txtStudentInfoSum.setBounds(315, 37, 316, 404);
+		contentPane.add(txtStudentInfoSum);
+		
+		JButton btnSaVe = new JButton("SAVE");
+		btnSaVe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String applName = textFieldName.getText();
+		        String idNumber = textFieldIdNum.getText();
+		        String program = rdoBsit.isSelected() ? "BS in Information Technology" : "BS in COmputer Science"; // Assuming one radio button must be selected
+		        String age = textFieldAge.getText();
+		        String address = textFieldAddress.getText();
+		        String course = comboBoxCourse.getSelectedItem().toString();
+		        
+		        //
+		        int prelim = Integer.parseInt(textFieldPrelim.getText());
+		        int  midterm = Integer.parseInt(textFieldMidterm.getText());
+		        int finals = Integer.parseInt(textFieldFinals.getText());
+		        
+		        //compute the numeric grade 
+		        int subRating = (int)((prelim*0.30) + (midterm*0.30) + (finals*0.40));
+		        
+		        //whereas convert the subrating to letter grade
+		        // if the numeric grade is 97 to 100, the converted letter grade is 1.00
+		     // if the numeric grade is 94 to 96, the converted letter grade is 1.25
+		     // if the numeric grade is 91 to 93, the converted letter grade is 1.50
+		     // if the numeric grade is 89 to 90, the converted letter grade is 1.75
+		     // if the numeric grade is 85 to 87, the converted letter grade is 2.00
+		     // if the numeric grade is 82 to 84, the converted letter grade is 2.25
+		     // if the numeric grade is 79 to 81, the converted letter grade is 2.50
+		     // if the numeric grade is 76 to 78, the converted letter grade is 2.75
+		     // if the numeric grade is  75, the converted letter grade is 3.00
+		     // if the numeric grade is 74 and below, the converted letter grade is 4.00
+		        
+		        // Convert the numeric grade to letter grade using a switch statement
+		     // Convert the numeric grade to letter grade
+		        String letterGrade;
+		        if (subRating >= 97) {
+		            letterGrade = "1.00";
+		        } else if (subRating >= 94) {
+		            letterGrade = "1.25";
+		        } else if (subRating >= 91) {
+		            letterGrade = "1.50";
+		        } else if (subRating >= 89) {
+		            letterGrade = "1.75";
+		        } else if (subRating >= 85) {
+		            letterGrade = "2.00";
+		        } else if (subRating >= 82) {
+		            letterGrade = "2.25";
+		        } else if (subRating >= 79) {
+		            letterGrade = "2.50";
+		        } else if (subRating >= 76) {
+		            letterGrade = "2.75";
+		        } else if (subRating >= 75) {
+		            letterGrade = "3.00";
+		        } else {
+		            letterGrade = "4.00";
+		        }
+		        
+		        // Append all the information to the text area
+		        txtStudentInfoSum.append("----------------------- STUDENT DATA ----------------------\n" + "Name: " + applName + "\tID Number: " + idNumber + "\n");
+		        txtStudentInfoSum.append("Program: " + program + "\n");
+		        txtStudentInfoSum.append("Age: " + age + "\n");
+		        txtStudentInfoSum.append("Address: " + address + "\n");
+		        txtStudentInfoSum.append("Course: " + course + "\n");
+		        txtStudentInfoSum.append("Subject Rating: " + letterGrade + "\n");
+		       
+				
+			}
+		});
+		btnSaVe.setBounds(140, 418, 89, 23);
+		contentPane.add(btnSaVe);
+		
+		
+	}
+}
